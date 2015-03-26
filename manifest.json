@@ -1,0 +1,25 @@
+{
+  "name" : "Personal Data Dashboard",
+  "author": "Mohamed Mansour",
+  "version" : "1.0",
+  "manifest_version" : 2,
+  "description" : "Manage your personal social data on the web with ease.",
+  "background": {
+    "scripts": ["scripts/backgroud.js"],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_icon": {
+      "38": "images/icon512.png" 
+    }
+  },
+  "icons": {
+    "128": "images/icon512.png"
+  },
+  "permissions": [
+      "https://www.facebook.com/*"
+  ],
+  "web_accessible_resources": [
+    "images/icon512.png"
+  ]
+}
