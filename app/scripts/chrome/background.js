@@ -1,18 +1,13 @@
 'use strict';
 
-// Mocking chrome variables for testing.
-var EMPTY_FUNCTION = function() {};
-var chrome = window.chrome || {
-    browserAction: {
-        onClicked: {
-            addListener: EMPTY_FUNCTION
-        }
-    },
-    extension: {
-        getViews: EMPTY_FUNCTION,
-        getURL: EMPTY_FUNCTION
-    }
-};
+/**
+ * Places a browser extension so accessing your private data would
+ * be easily accessible anytime. 
+ *
+ * @author Mohamed Mansour 2015 (http://mohamedmansour.com)
+ */
+
+var openedTab = null;
 
 // Bind the browser action event to chrome. 
 // Check if existing views for this extension that are running,
@@ -21,8 +16,8 @@ var chrome = window.chrome || {
 chrome.browserAction.onClicked.addListener(function() {
 	var views = chrome.extension.getViews({type:'tab'});
 	if (!views.length) {
-		window.open(chrome.extension.getURL('index.html'));
+        openedTab = window.open(chrome.extension.getURL('index.html'));
 		return;
 	}
-	views[0].focus();
+    openedTab.focus();
 });

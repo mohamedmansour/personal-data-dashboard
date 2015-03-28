@@ -1,3 +1,21 @@
 <div class="row marketing">
-    <h2>Main {{hello}}</h2>
+    <div ng-if="failed">Error Occured {{failed}</div>
+    <h2>Hello!</h2>
+    <img ng-src="https://graph.facebook.com/{{currentUser}}/picture" />
+    <ul class="nav nav-pills" role="tablist">
+      <li role="presentation" class="active"><a href="#">All <span class="badge">{{permissions.length}}</span></a></li>
+      <li role="presentation"><a href="#">Selected <span class="badge">{{(permissions | filter: { selected: true }).length}}</span></a></li>
+    </ul>
+
+    <ul class="permissions clearfix">
+        <li class="permission" ng-repeat="permission in permissions" ng-model="permission.selected" btn-checkbox>
+            <img ng-src="{{permission.img}}" class="img-thumbnail">
+            <p>{{permission.name}}</p>
+        </li>
+        <p class="permission-none" ng-if="!permissions">Loading ...</p>
+    </ul>
+
+    <div >
+        <button type="button" class="btn btn-default" ng-click="revokePermissions()">Revoke Permissions</button>
+    </div>
 </div>

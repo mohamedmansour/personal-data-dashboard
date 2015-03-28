@@ -1,14 +1,16 @@
 'use strict';
 
 /**
- * Main module of the application.
+ * Main AngularJS Entry Point.
+ *
+ * @author Mohamed Mansour 2015 (http://mohamedmansour.com)
  */
 angular
     .module('personalDataDashboardApp', [
         'ui.router',
+        'ui.bootstrap',
         'ngAnimate',
-        'ngResource',
-        'ui.bootstrap'
+        'ngResource'
     ])
     .run(['$rootScope', '$state', '$stateParams', '$location', function ($rootScope, $state, $stateParams, $location) {
         $rootScope.$state = $state;
