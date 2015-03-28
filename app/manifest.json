@@ -5,8 +5,11 @@
   "manifest_version" : 2,
   "description" : "Manage your personal social data on the web with ease.",
   "background": {
-    "scripts": ["scripts/chrome/background.js"],
-    "persistent": false
+    "scripts": [
+      "scripts/chrome/request_blocking.js", 
+      "scripts/chrome/background.js"
+    ],
+    "persistent": true
   },
   "browser_action": {
     "default_icon": {
@@ -17,7 +20,9 @@
     "128": "images/icon512.png"
   },
   "permissions": [
-      "https://www.facebook.com/*"
+      "webRequest",
+      "webRequestBlocking",
+      "https://*.facebook.com/*"
   ],
   "web_accessible_resources": [
     "images/icon512.png"
