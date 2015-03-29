@@ -8,7 +8,7 @@
     </ul>
 
     <ul class="permissions clearfix">
-        <li class="permission" ng-repeat="permission in permissions" ng-model="permission.selected" btn-checkbox>
+        <li class="permission" ng-repeat="permission in permissions" ng-model="permission.selected" toggle-checkbox>
             <img ng-src="{{permission.img}}" class="img-thumbnail">
             <p>{{permission.name}}</p>
         </li>
