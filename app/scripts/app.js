@@ -8,7 +8,7 @@
 var App = angular
     .module('personalDataDashboardApp', [
         'ui.router',
-        'ngAnimate'
+        'ngAnimate',
         'ngMaterial'
     ])
     .run(['$rootScope', '$state', '$stateParams', '$location', function ($rootScope, $state, $stateParams, $location) {
