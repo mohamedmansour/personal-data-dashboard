@@ -9,6 +9,7 @@ var App = angular
     .module('personalDataDashboardApp', [
         'ui.router',
         'ngAnimate'
+        'ngMaterial'
     ])
     .run(['$rootScope', '$state', '$stateParams', '$location', function ($rootScope, $state, $stateParams, $location) {
         $rootScope.$state = $state;
