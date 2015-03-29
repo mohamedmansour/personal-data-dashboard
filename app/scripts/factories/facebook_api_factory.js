@@ -99,9 +99,10 @@ App.factory('facebookApi', ['$q', '$http', function($q, $http) {
                 var permissions = [];
                 var permissionIndex = 0;
                 angular.forEach(unsanitizedPermissions, function(perm) {
+                    var appId = appIdArr[permissionIndex++];
                     permissions.push({
-                        img: perm.querySelector('img').src,
-                        appId: appIdArr[permissionIndex++],
+                        img: 'https://graph.facebook.com/' + appId + '/picture?type=large',
+                        appId: appId,
                         name: perm.querySelector('.ellipsis').innerText,
                     });
                 });
@@ -129,11 +130,13 @@ App.factory('facebookApi', ['$q', '$http', function($q, $http) {
                 ban_user:0
             };
 
-            this.Post(FB_DELETE_URL + appId, data, function() {
-                deferred.resolve();
-            }, function(error) {
-                deferred.reject(errorCode);;
-            });
+            //this.Post(FB_DELETE_URL + appId, data, function() {
+                setTimeout(function() {
+                    deferred.resolve();
+                }, 1000)
+           // }, function(error) {
+            //    deferred.reject(errorCode);;
+            //});
 
             return deferred.promise;
         }

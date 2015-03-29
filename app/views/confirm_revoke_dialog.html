@@ -1,0 +1,21 @@
+<md-dialog>
+    <md-content class="sticky-container">
+        <h2 class="md-title">Are you sure you want to revoke these permissions?</h2>
+        <div class="dialog-content">
+            <md-chips ng-model="permissions"
+                      readonly="true">
+              <md-chip>
+                <img ng-src="{{$chip.img}}" />
+                <span>{{$chip.name}}</span>
+              </md-chip>
+            </md-chips>
+        </div>
+    </md-content>
+    <div class="md-actions" layout="row">
+        <span flex></span>
+        <md-button ng-click="cancel()">Cancel</md-button>
+        <md-button ng-click="revoke()" class="md-primary">Revoke</md-button>
+    </div>
+</md-dialog>
+
+

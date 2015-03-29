@@ -20,7 +20,7 @@ var App = angular
             $window.ga('send', 'pageview', { page: $location.url() });
         });*/
     }])
-    .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider,   $urlRouterProvider) {
+    .config(['$stateProvider', '$urlRouterProvider', '$mdThemingProvider', function ($stateProvider, $urlRouterProvider, $mdThemingProvider) {
         $urlRouterProvider.otherwise('/');
 
         $stateProvider
@@ -29,4 +29,9 @@ var App = angular
                 templateUrl: 'views/main.html',
                 controller: 'MainCtrl'
             });
+
+        $mdThemingProvider.theme('default')
+            .primaryPalette('brown')
+            .accentPalette('grey')
+            .warnPalette('blue-grey');
     }]);

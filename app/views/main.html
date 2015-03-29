@@ -1,21 +1,49 @@
-<div class="row marketing">
-    <div ng-if="failed">Error Occured {{failed}</div>
-    <h2>Hello!</h2>
-    <img ng-src="https://graph.facebook.com/{{currentUser}}/picture" />
-    <ul class="nav nav-pills" role="tablist">
-      <li role="presentation" class="active"><a href="#">All <span class="badge">{{permissions.length}}</span></a></li>
-      <li role="presentation"><a href="#">Selected <span class="badge">{{(permissions | filter: { selected: true }).length}}</span></a></li>
-    </ul>
-
-    <ul class="permissions clearfix">
-        <li class="permission" ng-repeat="permission in permissions" ng-model="permission.selected" toggle-checkbox>
-            <img ng-src="{{permission.img}}" class="img-thumbnail">
-            <p>{{permission.name}}</p>
-        </li>
-        <p class="permission-none" ng-if="!permissions">Loading ...</p>
-    </ul>
-
-    <div >
-        <button type="button" class="btn btn-default" ng-click="revokePermissions()">Revoke Permissions</button>
+<md-toolbar layout="column" >
+    <button ng-click="toggleSidenav('left')" hide-gt-sm class="menuBtn">
+        <span class="visually-hidden">Menu</span>
+    </button>
+    <div class="md-toolbar-tools">
+        <h3>Personal Data Dashboard</h3>
+        <span flex=""></span>
+        <img ng-src="https://graph.facebook.com/{{currentUser}}/picture"/>
     </div>
+    <md-progress-linear class="md-warn" md-mode="{{processMode}}" value="{{processDeterminateValue}}"></md-progress-linear>
+</md-toolbar>
+
+<div layout="column" flex>
+    <md-content flex class="md-padding">
+        <md-whiteframe class="md-whiteframe-z1" layout-align="center center" ng-if="failed">
+            <span>{{failed}}</span>
+        </md-whiteframe>
+
+        <section layout="row" layout-sm="column">
+            <span class="permission-meta-label">Selected Permissions: {{(permissions | filter: { selected: true }).length}}</span>
+            <span flex=""></span>
+            <md-button class="md-raised" ng-click="selectAllPermissions()">Select All</md-button>
+            <md-button class="md-raised" ng-click="deselectAllPermissions()">Deselect All</md-button>
+        </section>
+
+        <md-list>
+            <md-item class="permission" ng-repeat="permission in permissions" ng-model="permission.selected" id="p{{permission.appId}}" toggle-checkbox>
+                <md-button class="md-grid-item-content">
+                    <img ng-src="{{permission.img}}"/>
+                    <div class="md-grid-text"> {{ permission.name }} </div>
+                </md-button>
+            </md-item>
+        </md-list>
+
+        <div layout="row" layout-sm="column" layout-align="space-around" ng-if="!permissions">
+            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+        </div>
+        <div layout="row" layout-sm="column" layout-align="center center" ng-if="permissions.length == 0">
+            <p>Yuppie! No app is requesting your permissions. Back to a clean slate!</p>
+        </div>
+
+    </md-content>
+
+    <md-button class="md-raised md-primary" 
+                ng-disabled="(permissions | filter: { selected: true }).length == 0" 
+                ng-click="confirmRevoke($event)">
+        Revoke Permissions
+    </md-button>
 </div>

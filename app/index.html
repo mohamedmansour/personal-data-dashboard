@@ -3,9 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>Personal Data Dashboard</title>
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+    <link rel="stylesheet" href="components/angular-material/angular-material.min.css">
     <!-- bower:css -->
     <!-- endbower -->
     <!-- endbuild -->
@@ -13,14 +15,12 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body>
-    <div ui-view class="container"></div>
+  <body layout="column" >
+    <div layout="column" flex ui-view></div>
 
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-flash"></span> Developed by Mohamed Mansour</p>
-      </div>
-    </div>
+    <md-toolbar layout="row" class="md-warn" layout-align="center center">
+        <span> Developed by Mohamed Mansour</span>
+    </md-toolbar>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
