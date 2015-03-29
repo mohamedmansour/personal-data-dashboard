@@ -7,7 +7,6 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -15,34 +14,7 @@
     <!-- endbuild -->
   </head>
   <body>
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#/">Personal Data Dashboard</a>
-          </div>
-
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-     <div ui-view class="container"></div>
+    <div ui-view class="container"></div>
 
     <div class="footer">
       <div class="container">
@@ -52,22 +24,21 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="components/jquery/dist/jquery.js"></script>
     <script src="components/angular/angular.js"></script>
-    <script src="components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="components/angular-animate/angular-animate.js"></script>
     <script src="components/angular-resource/angular-resource.js"></script>
-    <script src="components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="components/angular-aria/angular-aria.js"></script>
+    <script src="components/angular-animate/angular-animate.js"></script>
     <script src="components/angular-ui-router/release/angular-ui-router.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/chrome/async_tracking.js"></script>
-        <script src="scripts/app.js"></script>
-        <script src="scripts/factories/utils_factory.js"></script>
-        <script src="scripts/factories/facebook_api_factory.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/chrome/async_tracking.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/factories/utils_factory.js"></script>
+    <script src="scripts/factories/facebook_api_factory.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <!-- endbuild -->
 </body>
 </html>

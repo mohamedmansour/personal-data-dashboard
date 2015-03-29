@@ -5,12 +5,10 @@
  *
  * @author Mohamed Mansour 2015 (http://mohamedmansour.com)
  */
-angular
+var App = angular
     .module('personalDataDashboardApp', [
         'ui.router',
-        'ui.bootstrap',
-        'ngAnimate',
-        'ngResource'
+        'ngAnimate'
     ])
     .run(['$rootScope', '$state', '$stateParams', '$location', function ($rootScope, $state, $stateParams, $location) {
         $rootScope.$state = $state;
