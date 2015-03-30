@@ -21,13 +21,36 @@ var App = angular
         });*/
     }])
     .config(['$stateProvider', '$urlRouterProvider', '$mdThemingProvider', function ($stateProvider, $urlRouterProvider, $mdThemingProvider) {
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/home');
 
         $stateProvider
-            .state('home', {
+            .state('site', {
                 url: '/',
-                templateUrl: 'views/main.html',
-                controller: 'MainCtrl'
+                abstract: true,
+                views: {
+                    'site@': {
+                        templateUrl: 'views/site.html',
+                        controller: 'SiteCtrl',
+                    }
+                }
+            })
+            .state('site.home', {
+                url: 'home',
+                views: {
+                    'content': {
+                        templateUrl: 'views/main.html',
+                        controller: 'MainCtrl',
+                    }
+                }
+            })
+            .state('site.donate', {
+                url: 'donate',
+                views: {
+                    'content': {
+                        templateUrl: 'views/donate.html',
+                        controller: 'DonateCtrl'
+                    }
+                }
             });
 
         $mdThemingProvider.theme('default')

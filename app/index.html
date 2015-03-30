@@ -15,12 +15,8 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body layout="column" >
-    <div layout="column" flex ui-view></div>
-
-    <div layout="row" class="md-warn" layout-align="center center">
-        <span> Developed by Mohamed Mansour</span>
-    </div>
+  <body layout="row">
+    <div ui-view="site" layout="column" flex></div>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -37,10 +33,13 @@
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/chrome/async_tracking.js"></script>
     <script src="scripts/app.js"></script>
+    <script src="scripts/factories/progress_factory.js"></script>
     <script src="scripts/factories/utils_factory.js"></script>
     <script src="scripts/factories/facebook_api_factory.js"></script>
     <script src="scripts/directives/toggle_checkbox_directive.js"></script>
+    <script src="scripts/controllers/site.js"></script>
     <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/donate.js"></script>
     <!-- endbuild -->
 </body>
 </html>
