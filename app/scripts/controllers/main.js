@@ -8,12 +8,14 @@
 App.controller('MainCtrl', ['$scope', 'facebookApi', 'utils', '$mdDialog', '$filter', 'progress', 
         function ($scope, facebookApi, utils, $mdDialog, $filter, progress) {
     $scope.failedlogin = false;
+    $scope.attemptingLogin = false;
 
     // Make sure we are logged in to Facebook.
     facebookApi.Login().then(function(userId) {
         progress.user = userId;
         $scope.failedlogin = false;
-
+        $scope.attemptingLogin = false;
+        
         // Start fetching data.
         facebookApi.Fetch().then(function(perms) {
             $scope.permissions = perms;
@@ -31,6 +33,7 @@ App.controller('MainCtrl', ['$scope', 'facebookApi', 'utils', '$mdDialog', '$fil
     });
 
     $scope.gotoFacebook = function() {
+        $scope.attemptingLogin = true;
         window.open('https://www.facebook.com/login.php');
     };
 

@@ -21,10 +21,13 @@
         </section>
 
         <div class="error-status failed" ng-if="failedlogin">
-            <p>
+            <p ng-if="!attemptingLogin">
                 Failed to login to Facebook. 
                 <span ng-click="gotoFacebook()">Login now</span> 
                 then come back and <span ng-click="refresh()">refresh</span> this page.
+            </p>
+            <p ng-if="attemptingLogin">
+                You have to <span ng-click="refresh()">refresh</span> this page to login.
             </p>
         </div>
 
