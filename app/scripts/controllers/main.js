@@ -13,9 +13,12 @@ App.controller('MainCtrl', ['$scope', 'facebookApi', 'utils', '$mdDialog', '$fil
     $scope.processTotal = 0;
     $scope.processCurrent= 0;
 
+    $scope.failedlogin = false;
+
     // Make sure we are logged in to Facebook.
     facebookApi.Login().then(function(userId) {
         $scope.currentUser = userId;
+        $scope.failedlogin = false;
 
         // Start fetching data.
         facebookApi.Fetch().then(function(perms) {
@@ -24,8 +27,34 @@ App.controller('MainCtrl', ['$scope', 'facebookApi', 'utils', '$mdDialog', '$fil
             $scope.failed = reason;
         });
     }, function(reason) {
-        $scope.failed = reason;
+        if (reason == 401) {
+          showLoginDialog();
+          $scope.failedlogin = true;
+        }
+        else {
+          $scope.failed = reason;
+        }
     });
+
+    $scope.gotoFacebook = function() {
+        window.open('https://www.facebook.com/login.php');
+    };
+
+    $scope.refresh = function() {
+        window.location.reload();
+    };
+
+    function showLoginDialog() {
+        $mdDialog.show(
+          $mdDialog.confirm()
+            .parent(angular.element(document.body))
+            .title('You are not logged into Facebook')
+            .content('Please login to Facebook so we can fetch the apps that are requesting permission')
+            .clickOutsideToClose(true)
+            .ok('Login to Facebook')
+            .cancel('Cancel')
+        ).then($scope.gotoFacebook);
+    }
 
     /**
      * Revoking permission granted, start removing them.
@@ -81,6 +110,7 @@ App.controller('MainCtrl', ['$scope', 'facebookApi', 'utils', '$mdDialog', '$fil
     $scope.confirmRevoke = function($event) {
         var parentEl = angular.element(document.body);
         $mdDialog.show({
+            clickOutsideToClose: true,
             parent: parentEl,
             targetEvent: $event,
             templateUrl: 'views/confirm_revoke_dialog.html',

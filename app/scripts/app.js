@@ -31,7 +31,7 @@ var App = angular
             });
 
         $mdThemingProvider.theme('default')
-            .primaryPalette('brown')
-            .accentPalette('grey')
-            .warnPalette('blue-grey');
+            .primaryPalette('light-blue')
+            .accentPalette('yellow')
+            .warnPalette('grey');
     }]);

@@ -23,3 +23,25 @@
 .permission-meta-label {
     line-height: 50px;
 }
+
+.error-status {
+    padding: 10px;
+    background-color: #e51c23;
+    margin: 20px 0;
+    color: white;
+}
+
+.error-status span {
+    padding: 0px 5px;
+    margin: 0px 5px;
+    outline: 1px solid white;
+    color: white;
+    cursor: pointer;
+}
+
+
+
+.error-status span:hover {
+    background-color: white;
+    color: black;
+}
