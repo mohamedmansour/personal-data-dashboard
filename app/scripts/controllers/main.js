@@ -5,19 +5,13 @@
  *
  * @author Mohamed Mansour 2015 (http://mohamedmansour.com)
  */
-App.controller('MainCtrl', ['$scope', 'facebookApi', 'utils', '$mdDialog', '$filter', 
-        function ($scope, facebookApi, utils, $mdDialog, $filter) {
-
-    $scope.processMode = null;
-    $scope.processDeterminateValue = 0;
-    $scope.processTotal = 0;
-    $scope.processCurrent= 0;
-
+App.controller('MainCtrl', ['$scope', 'facebookApi', 'utils', '$mdDialog', '$filter', 'progress', 
+        function ($scope, facebookApi, utils, $mdDialog, $filter, progress) {
     $scope.failedlogin = false;
 
     // Make sure we are logged in to Facebook.
     facebookApi.Login().then(function(userId) {
-        $scope.currentUser = userId;
+        progress.user = userId;
         $scope.failedlogin = false;
 
         // Start fetching data.
@@ -61,23 +55,23 @@ App.controller('MainCtrl', ['$scope', 'facebookApi', 'utils', '$mdDialog', '$fil
      */
     function doRevoke() {
         var filter = $filter('filter');
-        $scope.processMode = 'determinate';
+        progress.processMode = 'determinate';
 
         // Filter out the list of appIds so we can remove them.
         var appIds = filter($scope.permissions, { selected: true }).map(function(perm) {
             return perm.appId;
         });
-        $scope.processTotal = appIds.length;
-        $scope.processCurrent = 0;
+        progress.processTotal = appIds.length;
+        progress.processCurrent = 0;
 
         // Process them in series, 500ms at a time.
         utils.Series(500, appIds, facebookApi.Delete).then(function(deleteResponses) {
-            $scope.processMode = null;
+            progress.processMode = null;
         }, function(reason) {
             console.error('Got error: ' + reason);
         }, function(update) {
-            $scope.processCurrent = $scope.processCurrent + 1;
-            $scope.processDeterminateValue = ($scope.processCurrent / $scope.processTotal) * 100;
+            progress.processCurrent = progress.processCurrent + 1;
+            progress.processDeterminateValue = (progress.processCurrent / progress.processTotal) * 100;
 
             var permissionToRemove = filter($scope.permissions, {appId: update})[0];
             $scope.permissions.splice($scope.permissions.indexOf(permissionToRemove), 1);

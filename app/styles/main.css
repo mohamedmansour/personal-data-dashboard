@@ -39,9 +39,21 @@
     cursor: pointer;
 }
 
-
+.footer {
+    text-align: center;
+}
 
 .error-status span:hover {
     background-color: white;
     color: black;
+}
+
+.core-header {
+    position: relative;
+}
+
+.core-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }

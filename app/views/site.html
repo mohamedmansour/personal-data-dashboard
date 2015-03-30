@@ -1,0 +1,19 @@
+<md-toolbar layout="column" class="core-header">
+    <button ng-click="toggleSidenav('left')" hide-gt-sm class="menuBtn">
+        <span class="visually-hidden">Menu</span>
+    </button>
+    <div class="md-toolbar-tools">
+        <h3>Personal Data Dashboard</h3>
+        <span flex=""></span>
+        <img ng-if="user" ng-src="https://graph.facebook.com/{{user}}/picture"/>
+    </div>
+    <md-progress-linear class="core-progress md-primary md-hue-1" md-mode="{{processMode}}" value="{{processDeterminateValue}}"></md-progress-linear>
+</md-toolbar>
+
+
+<div layout="column" flex ui-view="content"></div>
+
+<div layout="column" class="footer" layout-align="center center">
+    <p> Developed by Mohamed Mansour | Fork on GitHub<br />
+    <a ui-sref="site.donate">Like it? Donate!</a></p>
+</div>
