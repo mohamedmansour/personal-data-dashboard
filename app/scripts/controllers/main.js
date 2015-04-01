@@ -9,7 +9,7 @@ App.controller('MainCtrl', ['$scope', 'facebookApi', 'utils', '$mdDialog', '$fil
         function ($scope, facebookApi, utils, $mdDialog, $filter, progress) {
     $scope.failedlogin = false;
     $scope.attemptingLogin = false;
-
+    
     // Make sure we are logged in to Facebook.
     facebookApi.Login().then(function(userId) {
         progress.user = userId;

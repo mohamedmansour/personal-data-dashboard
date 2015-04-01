@@ -1,7 +1,9 @@
 <div layout="column" flex>
     <md-content flex class="md-padding">
         <section layout="row" layout-sm="column">
-            <span class="permission-meta-label">Selected Permissions: {{(permissions | filter: { selected: true }).length}}</span>
+            <md-input-container md-no-float>
+              <input ng-model="searchText" type="text" placeholder="Search app">
+            </md-input-container>
             <span flex=""></span>
             <md-button class="md-raised" 
                     ng-click="selectAllPermissions()" 
@@ -16,7 +18,7 @@
             <md-button class="md-raised md-primary md-hue-2" 
                     ng-disabled="permissions == null || (permissions | filter: { selected: true }).length == 0" 
                     ng-click="confirmRevoke($event)">
-                Revoke Permissions
+                Revoke {{(permissions | filter: { selected: true }).length}} Permissions
             </md-button>
         </section>
 
@@ -32,7 +34,7 @@
         </div>
 
         <md-list>
-            <md-item class="permission" ng-repeat="permission in permissions" ng-model="permission.selected" id="p{{permission.appId}}" toggle-checkbox>
+            <md-item class="permission" ng-repeat="permission in permissions | filter: searchText" ng-model="permission.selected" id="p{{permission.appId}}" toggle-checkbox>
                 <md-button class="md-grid-item-content">
                     <img ng-src="{{permission.img}}"/>
                     <div class="md-grid-text"> {{ permission.name }} </div>
