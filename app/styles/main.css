@@ -57,3 +57,17 @@
     bottom: 0;
     left: 0;
 }
+
+.profile-icon {
+    z-index: 20;
+    line-height: 4rem;
+    width: 4rem;
+    height: 4rem;
+    vertical-align: middle;
+    border-radius: 50%;
+    background-clip: padding-box;
+    overflow: hidden;
+    transition: 0.2s linear;
+    transition-property: background-color, box-shadow;
+
+}
