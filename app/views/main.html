@@ -39,7 +39,7 @@
         <p>Yuppie! No app is requesting your permissions. Back to a clean slate!</p>
     </div>
 
-    <div layout="row" layout-sm="column" layout-align="center center" ng-if="result.length == 0">
+    <div layout="row" layout-sm="column" layout-align="center center" ng-if="result.length == 0 && permissions.length != 0">
         <p>No results for the filter <strong>"{{searchText}}"</strong></p>
     </div>
 </md-whiteframe>

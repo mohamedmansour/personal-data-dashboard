@@ -5,8 +5,8 @@
  *
  * @author Mohamed Mansour 2015 (http://mohamedmansour.com)
  */
-App.controller('MainCtrl', ['$scope', 'facebookApi', 'utils', '$mdDialog', '$filter', 'authorization',
-        function ($scope, facebookApi, utils, $mdDialog, $filter, authorization) {
+App.controller('MainCtrl', ['$scope', 'facebookApi', 'utils', '$mdDialog', '$filter', 'authorization', 'progress',
+        function ($scope, facebookApi, utils, $mdDialog, $filter, authorization, progress) {
 
 
     if (!authorization.authorize()) {

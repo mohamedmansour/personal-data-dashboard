@@ -80,6 +80,6 @@ var App = angular
 
         $mdThemingProvider.theme('default')
             .primaryPalette('light-blue')
-            .accentPalette('yellow')
+            .accentPalette('red')
             .warnPalette('grey');
     }]);

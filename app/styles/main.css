@@ -12,9 +12,12 @@ body {
     height:150px;
     padding-top: 5px;
 }
+
 .permission.active button {
-    outline: 2px solid #ccc;
+    outline: 2px solid #aaa;
+    background-color: #aaa;
 }
+
 .permission-none {
     height: 115px;
     line-height: 115px;
