@@ -24,7 +24,7 @@
 <md-whiteframe class="md-whiteframe-z1" >
     <md-list>
         <md-item class="permission" ng-repeat="permission in permissions | filter: searchText as result" ng-model="permission.selected" id="p{{permission.appId}}" toggle-checkbox>
-            <md-button class="md-grid-item-content">
+            <md-button class="md-grid-item-content" title="{{ permission.name }}">
                 <img ng-src="{{permission.img}}"/>
                 <div class="md-grid-text"> {{ permission.name }} </div>
             </md-button>
