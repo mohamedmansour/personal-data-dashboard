@@ -17,3 +17,6 @@ $ bower install && grunt install
 ```
 
 For now, Facebook Permission Management would be supported. Other Oauth sites will be supported through pull requests or when I get time :)
+
+## Screenshot
+![Screenshot of the Chrome Extension](https://github.com/mohamedmansour/personal-data-dashboard/raw/master/assets/screen.png)
