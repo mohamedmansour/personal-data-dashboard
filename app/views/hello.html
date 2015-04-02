@@ -1,0 +1,30 @@
+<div layout="column" ng-if="isReady">
+  <md-whiteframe class="md-whiteframe-z1">
+      <h3>Welcome!</h3>
+      <p>It is becomming really hard managing who has access to your data. As well, it is
+         very tedious to revoke access to such data with ease. In Facebook example, you need 
+         three clicks to enter the app permission management page. Then you need two clicks
+         each to remove each app permision. So if you have 450 apps requesting permission
+         to use your facebook data, then that is around 1000 clicks. With this tool, you
+         do it with 3 clicks. </p>
+  </md-whiteframe>
+  <md-whiteframe class="md-whiteframe-z1">
+      <h3>What networks are supported?</h3>
+      <p>For now, we are going to support Facebook, then we will add Google, Twitter, GitHub, and LinkedIn one by one with your help.</p>
+  </md-whiteframe>
+  <md-whiteframe class="md-whiteframe-z1 login-message">
+      <p ng-if="!attemptingLogin">
+          You are not logged into Facebook. 
+          <span ng-click="gotoFacebook()">Login now</span> 
+          then come back and <span ng-click="refresh()">refresh</span> this page.
+      </p>
+      <p ng-if="attemptingLogin">
+          You have to <span ng-click="refresh()">refresh</span> this page to login.
+      </p>
+  </md-whiteframe>
+</div>
+<div layout="column" ng-if="!isReady">
+    <md-whiteframe class="md-whiteframe-z1" layout="row" layout-sm="column" layout-align="space-around" >
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </md-whiteframe>
+</div>

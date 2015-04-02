@@ -1,3 +1,7 @@
+body {
+    background-color: #eee;
+}
+
 .permission img {
     height: 100px;
     width: 100px;
@@ -31,21 +35,23 @@
     color: white;
 }
 
-.error-status span {
-    padding: 0px 5px;
+.login-message span {
+    padding: 5px;
     margin: 0px 5px;
-    outline: 1px solid white;
+    background-color: #3a5795;
     color: white;
     cursor: pointer;
+    font-weight: bold;
+}
+
+.login-message span:hover {
+    background-color: white;
+    color: #3a5795;
+    outline: 2px solid #3a5795;
 }
 
 .footer {
     text-align: center;
-}
-
-.error-status span:hover {
-    background-color: white;
-    color: black;
 }
 
 .core-header {
@@ -70,4 +76,25 @@
     transition: 0.2s linear;
     transition-property: background-color, box-shadow;
 
+}
+
+.md-whiteframe-z1 {
+    background: white;
+    margin: 20px;
+    padding: 20px;
+}
+
+.content {
+    background-color: transparent !important;
+}
+
+.toolbar {
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 15px;
+}
+
+.toolbar md-input-container {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);  background: white;
+    padding: 0 10px;
 }

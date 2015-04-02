@@ -11,9 +11,16 @@ var App = angular
         'ngAnimate',
         'ngMaterial'
     ])
-    .run(['$rootScope', '$state', '$stateParams', '$location', function ($rootScope, $state, $stateParams, $location) {
+    .run(['$rootScope', '$state', '$stateParams', '$location', 'progress', 'authorization', 
+                function ($rootScope, $state, $stateParams, $location, progress, authorization) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
+
+
+        $rootScope.$on('$stateChangeStart', function (event, toState, toStateParams) {
+            $rootScope.toState = toState;
+            $rootScope.toStateParams = toStateParams;
+        });
 
         /*// Hookup Google Analytics for sub pages when viewed.
         $rootScope.$on('$viewContentLoaded', function(event) {
@@ -21,7 +28,7 @@ var App = angular
         });*/
     }])
     .config(['$stateProvider', '$urlRouterProvider', '$mdThemingProvider', function ($stateProvider, $urlRouterProvider, $mdThemingProvider) {
-        $urlRouterProvider.otherwise('/home');
+        $urlRouterProvider.otherwise('/hello');
 
         $stateProvider
             .state('site', {
@@ -34,6 +41,18 @@ var App = angular
                     }
                 }
             })
+            .state('site.hello', {
+                url: 'hello',
+                views: {
+                    'content': {
+                        templateUrl: 'views/hello.html',
+                        controller: 'HelloCtrl',
+                    }
+                },
+                data: {
+                    roles: []
+                }
+            })
             .state('site.home', {
                 url: 'home',
                 views: {
@@ -41,6 +60,9 @@ var App = angular
                         templateUrl: 'views/main.html',
                         controller: 'MainCtrl',
                     }
+                },
+                data: {
+                    roles: ['User']
                 }
             })
             .state('site.donate', {
@@ -50,6 +72,9 @@ var App = angular
                         templateUrl: 'views/donate.html',
                         controller: 'DonateCtrl'
                     }
+                },
+                data: {
+                    roles: []
                 }
             });
 

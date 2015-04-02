@@ -5,53 +5,19 @@
  *
  * @author Mohamed Mansour 2015 (http://mohamedmansour.com)
  */
-App.controller('MainCtrl', ['$scope', 'facebookApi', 'utils', '$mdDialog', '$filter', 'progress', 
-        function ($scope, facebookApi, utils, $mdDialog, $filter, progress) {
-    $scope.failedlogin = false;
-    $scope.attemptingLogin = false;
-    
-    // Make sure we are logged in to Facebook.
-    facebookApi.Login().then(function(userId) {
-        progress.user = userId;
-        $scope.failedlogin = false;
-        $scope.attemptingLogin = false;
-        
-        // Start fetching data.
-        facebookApi.Fetch().then(function(perms) {
-            $scope.permissions = perms;
-        }, function(reason) {
-            $scope.failed = reason;
-        });
-    }, function(reason) {
-        if (reason == 401) {
-          showLoginDialog();
-          $scope.failedlogin = true;
-        }
-        else {
-          $scope.failed = reason;
-        }
-    });
+App.controller('MainCtrl', ['$scope', 'facebookApi', 'utils', '$mdDialog', '$filter', 'authorization',
+        function ($scope, facebookApi, utils, $mdDialog, $filter, authorization) {
 
-    $scope.gotoFacebook = function() {
-        $scope.attemptingLogin = true;
-        window.open('https://www.facebook.com/login.php');
-    };
 
-    $scope.refresh = function() {
-        window.location.reload();
-    };
-
-    function showLoginDialog() {
-        $mdDialog.show(
-          $mdDialog.confirm()
-            .parent(angular.element(document.body))
-            .title('You are not logged into Facebook')
-            .content('Please login to Facebook so we can fetch the apps that are requesting permission')
-            .clickOutsideToClose(true)
-            .ok('Login to Facebook')
-            .cancel('Cancel')
-        ).then($scope.gotoFacebook);
+    if (!authorization.authorize()) {
+        return;
     }
+
+    facebookApi.Fetch().then(function(perms) {
+        $scope.permissions = perms;
+    }, function(reason) {
+        $scope.failed = reason;
+    });
 
     /**
      * Revoking permission granted, start removing them.
