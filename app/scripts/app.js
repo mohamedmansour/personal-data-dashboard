@@ -27,9 +27,11 @@ var App = angular
             $window.ga('send', 'pageview', { page: $location.url() });
         });*/
     }])
-    .config(['$stateProvider', '$urlRouterProvider', '$mdThemingProvider', function ($stateProvider, $urlRouterProvider, $mdThemingProvider) {
-        $urlRouterProvider.otherwise('/hello');
+    .config(['$stateProvider', '$urlRouterProvider', '$mdThemingProvider', '$compileProvider',
+                function ($stateProvider, $urlRouterProvider, $mdThemingProvider, $compileProvider) {
 
+        // Config URL Routing
+        $urlRouterProvider.otherwise('/hello');
         $stateProvider
             .state('site', {
                 url: '/',
@@ -78,6 +80,10 @@ var App = angular
                 }
             });
 
+        // Configure Chrome Extension Safe Url
+        $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension):/);
+
+        // Configure Themes
         $mdThemingProvider.theme('default')
             .primaryPalette('light-blue')
             .accentPalette('red')
