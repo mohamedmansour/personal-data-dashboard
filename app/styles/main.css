@@ -2,38 +2,12 @@ body {
     background-color: #EDECEC;
 }
 
-.permission img {
-    height: 100px;
-    width: 100px;
-}
-
-.permission button {
-    width:115px;
-    height:150px;
-    padding-top: 5px;
-}
-
-.permission.active button {
-    outline: 2px solid #aaa;
-    background-color: #aaa;
-}
-
+/* Permission */
 .permission-none {
     height: 115px;
     line-height: 115px;
     text-align: center;
     background-color: #f9f9f9;
-}
-.md-chips {
-    box-shadow: none;
-}
-
-.md-chip img {
-    width: 12px;
-}
-
-.permission-meta-label {
-    line-height: 50px;
 }
 
 .error-status {
@@ -43,6 +17,8 @@ body {
     color: white;
 }
 
+
+/* Login view */
 .login-message span {
     padding: 5px;
     margin: 0px 5px;
@@ -58,6 +34,7 @@ body {
     outline: 2px solid #3a5795;
 }
 
+/* Layout */
 .footer {
     text-align: center;
 }
@@ -68,51 +45,14 @@ body {
 
 .core-progress {
     position: absolute;
-    bottom: 0;
+    top: -5px; /* angular progress adds 5px to absolute no idea*/
     left: 0;
 }
 
-.profile-icon {
-    z-index: 20;
-    line-height: 4rem;
-    width: 4rem;
-    height: 4rem;
-    vertical-align: middle;
-    border-radius: 50%;
-    background-clip: padding-box;
-    overflow: hidden;
-    transition: 0.2s linear;
-    transition-property: background-color, box-shadow;
-
-}
-
-.md-whiteframe-z1 {
-    background: white;
-    margin: 20px;
-    padding: 20px;
-    box-shadow: 0 1px 2px rgba(0,0,0,.26);
+.content-wrapper {
+    position: relative;
 }
 
 .content {
     background-color: transparent !important;
-}
-
-.toolbar {
-    margin-top: 20px;
-    padding-left: 20px;
-    padding-right: 15px;
-}
-
-.toolbar md-input-container {
-    padding: 0 10px;
-}
-
-a, a:visited {
-    color: blue;
-}
-
-.logo {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
 }

@@ -1,19 +1,22 @@
 <md-toolbar layout="column" class="core-header">
-    <button ng-click="toggleSidenav('left')" hide-gt-sm class="menuBtn">
-        <span class="visually-hidden">Menu</span>
-    </button>
+    <md-progress-linear class="core-progress md-primary md-hue-1" md-mode="{{processMode}}" value="{{processDeterminateValue}}"></md-progress-linear>
     <div class="md-toolbar-tools" >
         <h3 layout="row">
             <div>Personal Data Dashboard</div>
         </h3>
         <span flex=""></span>
-        <img class="profile-icon" ng-if="user" ng-src="https://graph.facebook.com/{{user}}/picture"/>
+        <img class="profile-icon" ng-if="user" ng-src="https://graph.facebook.com/{{user}}/picture" ng-click="toggleSidebar()"/>
     </div>
-    <md-progress-linear class="core-progress md-primary md-hue-1" md-mode="{{processMode}}" value="{{processDeterminateValue}}"></md-progress-linear>
 </md-toolbar>
 
-
-<md-content layout="column" flex ui-view="content" class="content"></md-content>
+<div layout="row" flex class="content-wrapper">
+    <md-content layout="column" flex ui-view="content" class="content"></md-content>
+    <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+        <md-content class="md-padding">
+            <h2>Hi<h2>
+        </md-content>
+    </md-sidenav>
+</div>
 
 <div layout="column" class="footer" layout-align="center center">
     <p> Developed by <a href="http://mohamedmansour.com">Mohamed Mansour</a> | Follow me on <a href="http://twitter.com/mohamedmansour">Twitter</a>, <a href="http://google.com/+mohamedmansour">Google+</a>, <a href="http://facebook.com/mohamedmansour">Facebook</a><br />
