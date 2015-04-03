@@ -1,5 +1,5 @@
 body {
-    background-color: #eee;
+    background-color: #EDECEC;
 }
 
 .permission img {
@@ -90,6 +90,7 @@ body {
     background: white;
     margin: 20px;
     padding: 20px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.26);
 }
 
 .content {
@@ -103,7 +104,6 @@ body {
 }
 
 .toolbar md-input-container {
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);  background: white;
     padding: 0 10px;
 }
 

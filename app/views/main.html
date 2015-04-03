@@ -4,17 +4,17 @@
       <input ng-model="searchText" type="text" placeholder="Search app">
     </md-input-container>
     <span flex=""></span>
-    <md-button class="md-raised" 
+    <md-button 
             ng-click="selectAllPermissions()" 
             ng-disabled="permissions == null || permissions.length == 0">
         Select All
     </md-button>
-    <md-button class="md-raised" 
+    <md-button 
             ng-click="deselectAllPermissions()" 
             ng-disabled="permissions == null || permissions.length == 0">
         Deselect All
     </md-button>
-    <md-button class="md-raised md-primary md-hue-2" 
+    <md-button class="md-primary md-raised" 
             ng-disabled="permissions == null || (permissions | filter: { selected: true }).length == 0" 
             ng-click="confirmRevoke($event)">
         Revoke {{(permissions | filter: { selected: true }).length}} Permissions
@@ -23,11 +23,11 @@
 
 <md-whiteframe class="md-whiteframe-z1" >
     <md-list>
-        <md-item class="permission" ng-repeat="permission in permissions | filter: searchText as result" ng-model="permission.selected" id="p{{permission.appId}}" toggle-checkbox>
-            <md-button class="md-grid-item-content" title="{{ permission.name }}">
-                <img ng-src="{{permission.img}}"/>
-                <div class="md-grid-text"> {{ permission.name }} </div>
-            </md-button>
+        <md-subheader class="md-no-sticky">Facebook ({{result.length}} apps)</md-subheader>
+        <md-item class="permission" ng-repeat="permission in permissions | filter: searchText as result" id="p{{permission.appId}}">
+            <img alt="avatar" ng-src="{{permission.img}}" class="md-avatar" />
+            <p>{{ permission.name }}</p>
+            <md-checkbox class="md-secondary" ng-model="permission.selected"></md-checkbox>
         </md-item>
     </md-list>
 
