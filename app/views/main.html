@@ -23,11 +23,11 @@
 <md-whiteframe class="md-whiteframe-z1" >
     <md-list>
         <md-subheader class="md-no-sticky">Facebook ({{result.length}} apps)</md-subheader>
-        <md-item class="permission" ng-repeat="permission in permissions | filter: searchText as result" id="p{{permission.appId}}">
+        <md-list-item class="permission" ng-repeat="permission in permissions | filter: searchText as result" id="p{{permission.appId}}">
             <img alt="avatar" ng-src="{{permission.img}}" class="md-avatar" />
             <p>{{ permission.name }}</p>
             <md-checkbox class="md-secondary" ng-model="permission.selected"></md-checkbox>
-        </md-item>
+        </md-list-item>
     </md-list>
 
     <div layout="row" layout-sm="column" layout-align="space-around" ng-if="!permissions">
